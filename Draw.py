@@ -20,21 +20,21 @@ def draw(x, y, color):
 
 
 def run(x_start, y_start):
-    for i in range(count):
-        x = x_start
-        y = y_start
-        c = (choice(range(255)), choice(range(255)), choice(range(255)))
+    #for i in range(count):
+    x = x_start
+    y = y_start
+    c = (choice(range(255)), choice(range(255)), choice(range(255)))
+    draw(x, y, c)
+    while y < heigth - 2 * radius:
+        screen.fill((255, 255, 255))
+        screen.blit(screen2, (0, 0))
+        y += speed # int((speed * clock.tick() / 1000))
         draw(x, y, c)
-        while y < heigth - 2 * radius:
-            screen.fill((255, 255, 255))
-            screen.blit(screen2, (0, 0))
-            y += speed # int((speed * clock.tick() / 1000))
-            draw(x, y, c)
-            pygame.display.flip()
-            clock.tick(fps)
-        screen2.blit(screen, (0, 0))
-        x_start = randint(radius, width - radius)
-        y_start = randint(radius, heigth // 2)
+        pygame.display.flip()
+        clock.tick(fps)
+    screen2.blit(screen, (0, 0))
+        #x_start = randint(radius, width - radius)
+        #y_start = randint(radius, heigth // 2)
 
 
 running = True
@@ -44,7 +44,6 @@ while running:
         if ev.type == pygame.QUIT:
             running = False
         if ev.type == pygame.MOUSEBUTTONDOWN:
-
             pos = pygame.mouse.get_pos()
             x_start = ev.pos[0]
             y_start = ev.pos[1]
@@ -52,7 +51,7 @@ while running:
     pygame.display.flip()
     clock.tick(20)
 
-while pygame.event.wait().type != pygame.QUIT:
-    pygame.display.flip()
+#while pygame.event.wait().type != pygame.QUIT:
+    #pygame.display.flip()
 
 pygame.quit()
