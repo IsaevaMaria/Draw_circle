@@ -9,10 +9,9 @@ pygame.display.set_caption("Balls Animation")
 clock = pygame.time.Clock()
 screen.fill((255, 255, 255))
 screen2.fill((255, 255, 255))
-fps = 6
-speed = 10
+fps = 20
+speed = 100
 radius = 10
-count = randint(5, 30)
 
 
 def draw(x, y, color):
@@ -20,7 +19,6 @@ def draw(x, y, color):
 
 
 def run(x_start, y_start):
-    #for i in range(count):
     x = x_start
     y = y_start
     c = (choice(range(255)), choice(range(255)), choice(range(255)))
@@ -28,17 +26,14 @@ def run(x_start, y_start):
     while y < heigth - 2 * radius:
         screen.fill((255, 255, 255))
         screen.blit(screen2, (0, 0))
-        y += speed # int((speed * clock.tick() / 1000))
+        y += speed // fps
         draw(x, y, c)
         pygame.display.flip()
         clock.tick(fps)
     screen2.blit(screen, (0, 0))
-        #x_start = randint(radius, width - radius)
-        #y_start = randint(radius, heigth // 2)
 
 
 running = True
-
 while running:
     for ev in pygame.event.get():
         if ev.type == pygame.QUIT:
@@ -50,8 +45,4 @@ while running:
             run(x_start, y_start)
     pygame.display.flip()
     clock.tick(20)
-
-#while pygame.event.wait().type != pygame.QUIT:
-    #pygame.display.flip()
-
 pygame.quit()
