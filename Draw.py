@@ -28,7 +28,7 @@ def run(x_start, y_start):
         while y < heigth - 2 * radius:
             screen.fill((255, 255, 255))
             screen.blit(screen2, (0, 0))
-            y += speed  # int((speed * clock.tick() / 1000))
+            y += speed # int((speed * clock.tick() / 1000))
             draw(x, y, c)
             pygame.display.flip()
             clock.tick(fps)
@@ -38,13 +38,13 @@ def run(x_start, y_start):
 
 
 running = True
-play = True
+
 while running:
     for ev in pygame.event.get():
         if ev.type == pygame.QUIT:
             running = False
-        if ev.type == pygame.MOUSEBUTTONDOWN and play:
-            play = False
+        if ev.type == pygame.MOUSEBUTTONDOWN:
+
             pos = pygame.mouse.get_pos()
             x_start = ev.pos[0]
             y_start = ev.pos[1]
